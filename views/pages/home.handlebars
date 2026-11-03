@@ -1,0 +1,97 @@
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <span class="eyebrow">Oficina de arte criativa para crianças</span>
+            <h1>Estimulando a <span class="rainbow-text">criatividade</span> na infância</h1>
+            <p>Potencialize as habilidades do seu filho de forma lúdica e divertida. Oficinas criativas a domicílio e no seu evento, em {{site.cidade}}.</p>
+            <div class="hero-actions">
+                <a href="{{site.contato.whatsappLink}}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                    <i class='bx bxl-whatsapp'></i> Agendar oficina
+                </a>
+                <a href="/oficinas" class="btn btn-outline btn-lg">Conhecer as oficinas</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <span class="blob blob-yellow" aria-hidden="true"></span>
+            <span class="blob blob-blue" aria-hidden="true"></span>
+            <img src="/images/kids.png" alt="Crianças pintando telas em uma oficina da NeuroArte">
+            <div class="hero-badge">
+                <span>🎨</span>
+                <div><strong>A domicílio</strong><small>e no seu evento</small></div>
+            </div>
+        </div>
+    </div>
+    <div class="paint-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- MODALIDADES -->
+<section class="section reveal" id="oficinas">
+    <div class="container">
+        <span class="eyebrow">O que oferecemos</span>
+        <h2 class="section-title">Do jeito que for melhor para sua família</h2>
+        <div class="card-grid">
+            {{#each site.oficinas}}
+            <article class="service-card color-{{cor}}">
+                <span class="service-icon">{{icone}}</span>
+                <h3>{{titulo}}</h3>
+                <p>{{resumo}}</p>
+                <a href="/oficinas#{{id}}" class="card-link">Saiba mais <i class='bx bx-right-arrow-alt'></i></a>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<!-- TEMAS -->
+<section class="section section-soft reveal">
+    <div class="container">
+        <span class="eyebrow">Já criamos juntos</span>
+        <h2 class="section-title">Do papelão à imaginação</h2>
+        <p class="section-sub">Materiais simples viram grandes possibilidades criativas. Alguns temas que já passaram pelas nossas oficinas:</p>
+        {{> temas}}
+    </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="section reveal">
+    <div class="container split">
+        <div class="split-images">
+            <img src="/images/oficina-evento.jpg" alt="Crianças pintando juntas em uma mesa ao ar livre, sentadas em almofadas coloridas" class="img-tilt-left" loading="lazy">
+            <img src="/images/sensorial-bebe.jpg" alt="Menina pequena sorrindo com o fantoche de meia que criou na oficina" class="img-tilt-right" loading="lazy">
+        </div>
+        <div>
+            <span class="eyebrow">Por que arte?</span>
+            <h2 class="section-title">Arte que ajuda a crescer</h2>
+            <p class="section-sub">Quando a criança cria, ela desenvolve muito mais do que um desenho bonito.</p>
+            <ul class="benefit-list">
+                {{#each site.beneficios}}
+                <li class="color-{{cor}}">
+                    <span class="benefit-dot"></span>
+                    <div>
+                        <h3>{{titulo}}</h3>
+                        <p>{{texto}}</p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- QUEM SOU EU -->
+<section class="section section-soft reveal">
+    <div class="container about-teaser">
+        <div class="avatar-circle" aria-hidden="true">👩🏼‍🎨</div>
+        <div>
+            <span class="eyebrow">Quem sou eu?</span>
+            <h2 class="section-title">Oi, eu sou a {{site.responsavel}}!</h2>
+            <p class="section-sub">Sou arte educadora e trabalho com oficinas criativas para crianças. Não estou brincando de fazer arte: para mim, arte é coisa séria, e existe muito estudo por trás de cada atividade.</p>
+            <a href="/sobre" class="btn btn-outline">Conheça minha história</a>
+        </div>
+    </div>
+</section>
+
+{{> feedbacks}}
+
+{{> cta}}

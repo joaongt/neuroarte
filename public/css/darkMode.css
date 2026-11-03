@@ -1,0 +1,31 @@
+/* DARK MODE - ativado pelo botão da lua (classe .dark-mode no <html>) */
+.dark-mode {
+    --pink-soft: #3a2232;
+    --orange-soft: #3a2a1c;
+    --yellow-soft: #3a331a;
+    --green-soft: #1d3327;
+    --blue-soft: #1b2d3b;
+    --purple-soft: #2c2340;
+
+    --bg-color: #17131f;
+    --bg-soft: #1f1a2a;
+    --surface: #241e31;
+    --text-color: #f3eefb;
+    --text-muted: #b9b0c9;
+    --border: #352d45;
+    --primary: #f06298;
+    --primary-hover: #ff7aab;
+    --on-primary: #17131f;
+    --footer-bg: #100d16;
+    --footer-text: #f3eefb;
+    --shadow-1: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-2: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* o logo tem fundo claro: dá um "cartão" para ele no modo escuro */
+.dark-mode .logo,
+.dark-mode .logo-footer {
+    background: #fffaf3;
+    border-radius: 12px;
+    padding: 4px 8px;
+}

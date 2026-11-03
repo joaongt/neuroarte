@@ -1,0 +1,22 @@
+<section class="section feedbacks reveal" id="feedbacks">
+    <div class="container">
+        <span class="eyebrow">Feedbacks</span>
+        <h2 class="section-title">O que as famílias dizem</h2>
+        {{#if site.feedbacks.length}}
+        <div class="feedback-grid">
+            {{#each site.feedbacks}}
+            <blockquote class="feedback-card">
+                <i class='bx bxs-quote-alt-left'></i>
+                <p>{{texto}}</p>
+                <cite>{{autor}}</cite>
+            </blockquote>
+            {{/each}}
+        </div>
+        {{else}}
+        <p class="section-sub">Os recados das famílias ficam guardados nos destaques do nosso Instagram.</p>
+        {{/if}}
+        <a href="{{site.contato.instagramLink}}" class="btn btn-outline" target="_blank" rel="noopener">
+            <i class='bx bxl-instagram'></i> Ver feedbacks no Instagram
+        </a>
+    </div>
+</section>

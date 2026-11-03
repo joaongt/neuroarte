@@ -1,0 +1,22 @@
+/* SOBRE / QUEM SOU EU */
+
+.prose p:first-of-type::first-letter {
+  font-family: "Baloo 2", cursive;
+  font-size: 3.2rem;
+  font-weight: 800;
+  float: left;
+  line-height: 1;
+  margin: 0.1rem 0.5rem 0 0;
+  color: var(--pink);
+}
+
+.quote {
+  font-family: "Baloo 2", cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-color);
+  border-left: 6px solid var(--yellow);
+  padding: 0.2rem 0 0.2rem 1rem;
+  margin: 1.5rem 0;
+}

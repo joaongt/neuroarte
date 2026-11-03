@@ -1,0 +1,69 @@
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">Quem sou eu?</span>
+        <h1>Oi, eu sou a {{site.responsavel}}</h1>
+        <p>{{site.responsavelNome}}, arte educadora e a pessoa por trás da NeuroArte com a Luci.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container split">
+        <div class="split-images">
+            <img src="/images/mascara-flores.jpg" alt="Criança segurando a máscara de flores coloridas que criou" class="img-tilt-left" loading="lazy">
+            <img src="/images/menino-com-flores.jpg" alt="Criança com sua arte inspirada no livro O menino com flores no cabelo" class="img-tilt-right" loading="lazy">
+        </div>
+        <div class="prose reveal">
+            <p>Sou arte educadora e trabalho com oficinas criativas para crianças. Não estou brincando de fazer arte: para mim, arte é coisa séria. Existe muito estudo por trás de cada atividade desenvolvida.</p>
+            <p>Nas oficinas, materiais simples como papelão e recicláveis viram foguetes, cavalinhos, ursinhos e asas de borboleta. A criança participa de todo o processo, da construção à pintura, e é protagonista da própria criação. E depois da arte vem a melhor parte: brincar com aquilo que criou.</p>
+            <blockquote class="quote">“Meu trabalho hoje era o sonho dessa criança aqui.” 🌈</blockquote>
+            <p>Hoje levo as oficinas para casas, festas, escolas e espaços parceiros de {{site.cidade}}, sempre com uma equipe apaixonada pelo universo infantil.</p>
+        </div>
+    </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="section section-soft reveal">
+    <div class="container">
+        <span class="eyebrow">Equipe</span>
+        <h2 class="section-title">Quem faz a NeuroArte acontecer</h2>
+        <div class="team-grid">
+            {{#each site.equipe}}
+            <article class="team-card color-{{cor}}">
+                <span class="team-initial" aria-hidden="true">{{nome.[0]}}</span>
+                <div>
+                    <h3>{{nome}}</h3>
+                    <p>{{papel}}</p>
+                </div>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<section class="section reveal">
+    <div class="container">
+        <span class="eyebrow">Nossos valores</span>
+        <h2 class="section-title">O que guia cada oficina</h2>
+        <div class="card-grid">
+            <article class="service-card color-pink">
+                <span class="service-icon">💗</span>
+                <h3>Afeto</h3>
+                <p>Um ambiente acolhedor, onde toda criança se sente bem-vinda.</p>
+            </article>
+            <article class="service-card color-green">
+                <span class="service-icon">🌱</span>
+                <h3>Liberdade</h3>
+                <p>Não existe desenho certo ou errado: existe a criança se expressando.</p>
+            </article>
+            <article class="service-card color-purple">
+                <span class="service-icon">🧠</span>
+                <h3>Estudo</h3>
+                <p>Cada atividade é planejada para estimular corpo, mente e emoções.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+{{> feedbacks}}
+
+{{> cta}}

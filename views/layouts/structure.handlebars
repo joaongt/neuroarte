@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NeuroArte: oficinas de arte criativa para crianças, a domicílio e no seu evento, em Belo Horizonte.">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{site.slogan}}. Oficinas criativas a domicílio e no seu evento em BH.">
+    <meta property="og:image" content="/images/kids.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/css/lightMode.css" rel="stylesheet" type="text/css">
+    <link href="/css/darkMode.css" rel="stylesheet" type="text/css">
+    <link href="/css/header.css" rel="stylesheet" type="text/css">
+    <link href="/css/{{style}}" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <script>
+        // aplica o tema salvo antes de pintar a tela (evita "piscar")
+        document.documentElement.classList.add('js');
+        try { if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode'); } catch (e) {}
+    </script>
+    <title>{{title}}</title>
+</head>
+<body>
+
+    {{#if site.evento}}
+    <!-- AVISO DE EVENTO -->
+    <div class="announcement" id="announcement">
+        <p>
+            <i class='bx bxs-calendar-star'></i>
+            <strong>{{site.evento.titulo}}</strong> · {{site.evento.data}}
+            <span class="announcement-local">· {{site.evento.local}}</span>
+        </p>
+        <button type="button" id="announcement-close" aria-label="Fechar aviso"><i class='bx bx-x'></i></button>
+    </div>
+    {{/if}}
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="nav container">
+
+            <!-- LOGO -->
+            <a href="/" class="logo-link" aria-label="NeuroArte - página inicial">
+                <img class="logo" src="/images/logo.png" alt="NeuroArte">
+            </a>
+
+            <!-- LIST LINKS -->
+            <nav id="menu" aria-label="Menu principal">
+                <ul class="list-links">
+                    <li><a href="/" class="link {{#if (eq path '/')}}current{{/if}}">Início</a></li>
+                    <li><a href="/oficinas" class="link {{#if (eq path '/oficinas')}}current{{/if}}">Oficinas</a></li>
+                    <li><a href="/sobre" class="link {{#if (eq path '/sobre')}}current{{/if}}">Quem sou eu</a></li>
+                    <li><a href="{{site.contato.instagramLink}}" class="link" target="_blank" rel="noopener">Portfólio</a></li>
+                    <li class="menu-cta">
+                        <a href="{{site.contato.whatsappLink}}" class="btn btn-primary" target="_blank" rel="noopener">
+                            <i class='bx bxl-whatsapp'></i> Agendar
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- DARK-LIGHT MODE -->
+                <button type="button" class="icon-btn" id="mode-switch" aria-label="Alternar modo escuro">
+                    <i class='bx bx-moon'></i>
+                </button>
+                <!-- MOBILE MENU -->
+                <button type="button" class="icon-btn" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="rainbow-bar" aria-hidden="true"></div>
+        <div class="footer-container container">
+            <div class="col">
+                <a href="/"><img class="logo-footer" src="/images/logo.png" alt="NeuroArte"></a>
+                <p>{{site.slogan}}. Oficinas criativas para crianças a domicílio e no seu evento, em {{site.cidade}}.</p>
+                <div class="footer-icon">
+                    <a href="{{site.contato.instagramLink}}" target="_blank" rel="noopener" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="{{site.contato.whatsappLink}}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="mailto:{{site.contato.email}}" aria-label="E-mail"><i class='bx bx-envelope'></i></a>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>Navegação</h4>
+                <a class="link-footer" href="/">Início</a>
+                <a class="link-footer" href="/oficinas">Oficinas</a>
+                <a class="link-footer" href="/sobre">Quem sou eu</a>
+                <a class="link-footer" href="/politica">Política de Privacidade</a>
+            </div>
+
+            <div class="col" id="contato">
+                <h4>Contato</h4>
+                <p><i class='bx bxl-whatsapp'></i> <a href="{{site.contato.whatsappLink}}" target="_blank" rel="noopener">{{site.contato.whatsapp}}</a></p>
+                <p><i class='bx bx-envelope'></i> <a href="mailto:{{site.contato.email}}">{{site.contato.email}}</a></p>
+                <p><i class='bx bxl-instagram'></i> <a href="{{site.contato.instagramLink}}" target="_blank" rel="noopener">{{site.contato.instagram}}</a></p>
+                <p><i class='bx bx-map'></i> {{site.cidade}}</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container copyright-inner">
+                <p>© {{year}} NeuroArte · Feito com <i class='bx bxs-heart'></i> em BH</p>
+                {{> dev-credit}}
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="{{site.contato.whatsappLink}}" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale no WhatsApp">
+        <i class='bx bxl-whatsapp'></i>
+    </a>
+
+    <!-- VOLTAR AO TOPO -->
+    <a href="#" id="to-top" aria-label="Voltar ao topo"><i class='bx bx-up-arrow-alt'></i></a>
+
+    <script type="text/javascript" src="/js/main.js"></script>
+    {{#if script}}<script type="text/javascript" src="/js/{{script}}"></script>{{/if}}
+</body>
+</html>

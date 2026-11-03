@@ -1,0 +1,63 @@
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">Oficinas</span>
+        <h1>Arte onde a criança estiver</h1>
+        <p>Levamos a oficina até você: em casa, na festa, na escola ou em um espaço parceiro.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container offer-list">
+        {{#each site.oficinas}}
+        <article class="offer reveal color-{{cor}}" id="{{id}}">
+            <span class="service-icon">{{icone}}</span>
+            <div>
+                <h2>{{titulo}}</h2>
+                <p>{{resumo}}</p>
+                <ul class="check-list">
+                    {{#each itens}}
+                    <li><i class='bx bx-check'></i> {{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </article>
+        {{/each}}
+    </div>
+</section>
+
+<!-- TEMAS -->
+<section class="section section-soft reveal">
+    <div class="container">
+        <span class="eyebrow">Temas</span>
+        <h2 class="section-title">Ideias que já viraram arte</h2>
+        <p class="section-sub">Cada oficina transforma materiais simples, como papelão e recicláveis, em brinquedos e obras cheias de personalidade. O tema pode ser combinado com a sua festa.</p>
+        {{> temas}}
+    </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section reveal">
+    <div class="container">
+        <span class="eyebrow">Como funciona</span>
+        <h2 class="section-title">Agendar é simples</h2>
+        <ol class="steps">
+            <li class="color-pink">
+                <span class="step-number">1</span>
+                <h3>Chame no WhatsApp</h3>
+                <p>Conte a data, o local e quantas crianças vão participar.</p>
+            </li>
+            <li class="color-yellow">
+                <span class="step-number">2</span>
+                <h3>Escolhemos o tema</h3>
+                <p>Definimos juntos a atividade ideal para a idade e para a ocasião.</p>
+            </li>
+            <li class="color-green">
+                <span class="step-number">3</span>
+                <h3>É só aproveitar</h3>
+                <p>Chegamos com os materiais e, depois da arte, vem a melhor parte: brincar com o que criou.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+{{> cta}}

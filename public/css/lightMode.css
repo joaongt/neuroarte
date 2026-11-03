@@ -1,0 +1,30 @@
+/* LIGHT MODE (padrão) - cores tiradas do logo NeuroArte */
+:root {
+    --pink: #e84a8a;
+    --orange: #f28c28;
+    --yellow: #f7c531;
+    --green: #3fae6a;
+    --blue: #2e9bd6;
+    --purple: #8e5bd0;
+
+    --pink-soft: #fde3ee;
+    --orange-soft: #fee8d4;
+    --yellow-soft: #fff4cc;
+    --green-soft: #ddf3e5;
+    --blue-soft: #dbeefa;
+    --purple-soft: #ece2f8;
+
+    --bg-color: #fffaf3;
+    --bg-soft: #fff1e3;
+    --surface: #ffffff;
+    --text-color: #2b2340;
+    --text-muted: #625a75;
+    --border: #f0e4d6;
+    --primary: var(--pink);
+    --primary-hover: #d13575;
+    --on-primary: #ffffff;
+    --footer-bg: #2b2340;
+    --footer-text: #f3eefb;
+    --shadow-1: 0 2px 10px rgba(43, 35, 64, 0.06);
+    --shadow-2: 0 12px 30px rgba(43, 35, 64, 0.12);
+}
