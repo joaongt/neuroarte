@@ -1,12 +1,12 @@
 // Conteúdo do site em um só lugar: edite aqui sem mexer no HTML.
 
 const whatsappNumber = '5531982925328';
-const whatsappText = encodeURIComponent('Olá, Luci! Vim pelo site da NeuroArte e quero saber mais sobre as oficinas.');
+const whatsappText = encodeURIComponent('Olá, Luh! Vim pelo site da NeuroArte e quero saber mais sobre as oficinas.');
 
 export default {
   nome: 'NeuroArte',
   slogan: 'Estimulando a criatividade na infância',
-  responsavel: 'Luci',
+  responsavel: 'Luh',
   responsavelNome: 'Luciana',
   cidade: 'Belo Horizonte e região',
 
@@ -87,8 +87,9 @@ export default {
 
   // Equipe
   equipe: [
-    { nome: 'Luciana (Luci)', papel: 'Arte educadora e criadora da NeuroArte', cor: 'pink' },
-    { nome: 'Karina Pereira', papel: 'Pedagoga, fotógrafa nas horas vagas e apaixonada pelo universo infantil', cor: 'blue' },
+    { nome: 'Luciana (Luh)', papel: 'Arte educadora e criadora da NeuroArte', cor: 'pink' },
+    { nome: 'Maria Eduarda', papel: 'Filha da Luciana e integrante da equipe NeuroArte', cor: 'blue' },
+    { nome: 'Vívian Tavares', papel: 'Nora da Luciana e estudante de Pedagogia', cor: 'purple' },
   ],
 
   // Feedbacks das famílias (tirados do destaque "Feedbacks" do Instagram).
