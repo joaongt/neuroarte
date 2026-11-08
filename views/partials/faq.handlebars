@@ -1,0 +1,15 @@
+<section class="section faq reveal" id="duvidas">
+    <div class="container faq-container">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2 class="section-title">Antes de agendar</h2>
+        <div class="faq-list">
+            {{#each site.faq}}
+            <details class="faq-item">
+                <summary>{{pergunta}} <i class='bx bx-chevron-down' aria-hidden="true"></i></summary>
+                <p>{{resposta}}</p>
+            </details>
+            {{/each}}
+        </div>
+        <p class="faq-more">Ficou outra dúvida? <a href="{{site.contato.whatsappLink}}" target="_blank" rel="noopener">Pergunte no WhatsApp</a>.</p>
+    </div>
+</section>

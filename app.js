@@ -10,15 +10,49 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5500;
 
+// Analytics (opcionais): só são carregados se os IDs estiverem no .env
+const analytics = {
+  ga4: process.env.GA4_ID || null,
+  metaPixel: process.env.META_PIXEL_ID || null,
+};
+
 // Express middleware
 const app = express();
+app.set('trust proxy', true); // Render/Docker: respeita https e o host original
 app.use(express.static('public'));
+
+// Endereço absoluto do site (prévia de links no WhatsApp/Instagram e Google)
+const baseUrlFor = (req) =>
+  (process.env.SITE_URL || site.url || `${req.protocol}://${req.get('host')}`).replace(/\/$/, '');
 
 // Global data available in every view (header, footer, popup)
 app.use((req, res, next) => {
   res.locals.site = site;
   res.locals.year = new Date().getFullYear();
   res.locals.path = req.path;
+  res.locals.baseUrl = baseUrlFor(req);
+  res.locals.analytics = analytics;
+  // Dados estruturados para o Google entender o negócio local
+  res.locals.schema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: site.nome,
+    description: 'Oficinas de arte criativa para crianças a domicílio, em festas e escolas em Belo Horizonte e região.',
+    url: res.locals.baseUrl,
+    image: `${res.locals.baseUrl}/images/kids.png`,
+    logo: `${res.locals.baseUrl}/images/logo.png`,
+    telephone: '+55 31 98292-5328',
+    email: site.contato.email,
+    areaServed: { '@type': 'City', name: 'Belo Horizonte' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Belo Horizonte', addressRegion: 'MG', addressCountry: 'BR' },
+    sameAs: [site.contato.instagramLink],
+    founder: {
+      '@type': 'Person',
+      name: site.responsavelNome,
+      jobTitle: 'Arte educadora',
+      sameAs: [site.responsavelInstagramLink],
+    },
+  };
   next();
 });
 
@@ -27,6 +61,10 @@ app.engine('handlebars', exphbs.engine({
   defaultLayout: 'structure',
   helpers: {
     eq: (a, b) => a === b,
+    or: (a, b) => a || b,
+    inc: (n) => Number(n) + 1,
+    // JSON seguro para <script type="application/ld+json">
+    json: (obj) => JSON.stringify(obj).replace(/</g, '\\u003c'),
   },
 }));
 app.set('view engine', 'handlebars');
@@ -39,6 +77,7 @@ app.use((req, res) => {
   res.status(404).render('pages/404', {
     title: 'Página não encontrada | NeuroArte',
     style: 'politica.css',
+    noindex: true,
   });
 });
 

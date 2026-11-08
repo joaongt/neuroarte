@@ -1,0 +1,75 @@
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">Festas infantis em BH</span>
+        <h1>Oficina de arte no aniversário do seu filho</h1>
+        <p>Um espaço de arte na festa: as crianças criam, brincam e levam a obra para casa. Tema combinado com a decoração, ao ar livre ou em ambiente fechado.</p>
+        <div class="page-hero-actions">
+            <a href="{{site.contato.whatsappFesta}}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                <i class='bx bxl-whatsapp'></i> Consultar data da festa
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- POR QUE NA FESTA -->
+<section class="section reveal">
+    <div class="container split">
+        <div class="split-images">
+            <img src="/images/portfolio/festa-cavaletes.jpg" alt="Mesa com cavaletes, telas e almofadas coloridas montada no jardim ao pôr do sol" class="img-tilt-left" loading="lazy">
+            <img src="/images/oficina-evento.jpg" alt="Crianças pintando juntas em uma mesa ao ar livre, sentadas em almofadas coloridas" class="img-tilt-right" loading="lazy">
+        </div>
+        <div>
+            <span class="eyebrow">Por que uma oficina na festa?</span>
+            <h2 class="section-title">A atração que vira lembrança</h2>
+            <p class="section-sub">Enquanto os adultos aproveitam a festa, as crianças ficam envolvidas criando algo delas.</p>
+            <ul class="check-list festa-list">
+                <li><i class='bx bx-check'></i> Oficina temática combinando com a festa (ex.: Urso, Fundo do Mar, Espaço)</li>
+                <li><i class='bx bx-check'></i> Decoração temática com chapéus, bandeirinhas e adesivos</li>
+                <li><i class='bx bx-check'></i> Todos os materiais inclusos: é só separar o espaço</li>
+                <li><i class='bx bx-check'></i> Cada criança leva a própria obra para casa, uma lembrancinha feita por ela</li>
+                <li><i class='bx bx-check'></i> Ao ar livre ou em ambiente fechado, em casa, no salão ou no buffet</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- TEMAS -->
+<section class="section section-soft reveal">
+    <div class="container">
+        <span class="eyebrow">Temas</span>
+        <h2 class="section-title">Escolha o tema da festa</h2>
+        <p class="section-sub">Alguns temas que já passaram pelas nossas oficinas. Tem outro tema na festa? A gente adapta.</p>
+        {{> temas}}
+    </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section reveal">
+    <div class="container">
+        <span class="eyebrow">Como funciona</span>
+        <h2 class="section-title">Reservar a data é simples</h2>
+        <ol class="steps">
+            <li class="color-pink">
+                <span class="step-number">1</span>
+                <h3>Chame no WhatsApp</h3>
+                <p>Conte a data da festa, o local, quantas crianças e as idades.</p>
+            </li>
+            <li class="color-yellow">
+                <span class="step-number">2</span>
+                <h3>Escolhemos o tema</h3>
+                <p>Combinamos a atividade com o tema da festa e a idade dos convidados.</p>
+            </li>
+            <li class="color-green">
+                <span class="step-number">3</span>
+                <h3>Festa com arte</h3>
+                <p>Chegamos com tudo pronto. As crianças criam, brincam e levam a obra para casa.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+{{> feedbacks}}
+
+{{> faq}}
+
+{{> cta ctaTitle="Vamos reservar a data da festa?" ctaLink=site.contato.whatsappFesta}}

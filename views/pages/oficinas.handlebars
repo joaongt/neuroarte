@@ -9,24 +9,87 @@
 <section class="section">
     <div class="container offer-list">
         {{#each site.oficinas}}
-        <article class="offer reveal color-{{cor}}" id="{{id}}">
-            <span class="service-icon">{{icone}}</span>
+        <article class="offer reveal color-{{cor}}{{#if foto}} has-photo{{/if}}" id="{{id}}">
+            {{#if foto}}
+            <span class="offer-photo">
+                <img src="{{foto}}" alt="{{fotoAlt}}" loading="lazy">
+                <span class="service-icon" aria-hidden="true">{{> icon name=icone}}</span>
+            </span>
+            {{else}}
+            <span class="service-icon">{{> icon name=icone}}</span>
+            {{/if}}
             <div>
                 <h2>{{titulo}}</h2>
+                {{#if (or idade preco)}}
+                <div class="offer-tags">
+                    {{#if idade}}<span class="tag"><i class='bx bx-child'></i> {{idade}}</span>{{/if}}
+                    {{#if preco}}<span class="tag"><i class='bx bx-purchase-tag'></i> {{preco}}</span>{{/if}}
+                </div>
+                {{/if}}
                 <p>{{resumo}}</p>
                 <ul class="check-list">
                     {{#each itens}}
                     <li><i class='bx bx-check'></i> {{this}}</li>
                     {{/each}}
                 </ul>
+                <div class="offer-actions">
+                    <a href="{{whatsapp}}" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class='bx bxl-whatsapp'></i> Quero essa oficina
+                    </a>
+                    {{#if (eq id 'eventos')}}<a href="/festas-infantis" class="btn btn-outline">Oficina para aniversário</a>{{/if}}
+                </div>
             </div>
         </article>
         {{/each}}
     </div>
 </section>
 
+<!-- INVESTIMENTO (oficina a domicílio) -->
+<section class="section section-soft reveal" id="investimento">
+    <div class="container">
+        <span class="eyebrow">Investimento</span>
+        <h2 class="section-title">Oficinas a domicílio</h2>
+        <p class="section-sub">Uma hora de arte na sua casa, com todo o material incluso. Escolha a frequência que combina com a rotina da sua família.</p>
+
+        <div class="price-grid">
+            {{#each site.precos.planos}}
+            <article class="price-card{{#if destaque}} featured{{/if}}">
+                {{#if destaque}}<span class="price-flag">Mais escolhido</span>{{/if}}
+                <h3>{{titulo}}</h3>
+                <p class="price-value"><small>R$</small>{{valor}}</p>
+                <p class="price-detail">{{detalhe}}</p>
+                {{#if extra}}<p class="price-extra">{{extra}}</p>{{/if}}
+            </article>
+            {{/each}}
+        </div>
+
+        <div class="price-bottom">
+            <div class="included">
+                <h3><i class='bx bxs-badge-check'></i> Está incluso no valor</h3>
+                <ul class="check-list">
+                    {{#each site.precos.incluso}}
+                    <li><i class='bx bx-check'></i> {{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <ul class="why-list">
+                {{#each site.precos.beneficios}}
+                <li>
+                    <i class='bx bxs-star'></i>
+                    <div><strong>{{titulo}}</strong><span>{{texto}}</span></div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="section-actions">
+            <a href="{{site.oficinas.[0].whatsapp}}" class="btn btn-primary btn-lg" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> Agendar oficina em casa</a>
+        </div>
+    </div>
+</section>
+
 <!-- TEMAS -->
-<section class="section section-soft reveal">
+<section class="section reveal">
     <div class="container">
         <span class="eyebrow">Temas</span>
         <h2 class="section-title">Ideias que já viraram arte</h2>
@@ -36,7 +99,7 @@
 </section>
 
 <!-- COMO FUNCIONA -->
-<section class="section reveal">
+<section class="section section-soft reveal">
     <div class="container">
         <span class="eyebrow">Como funciona</span>
         <h2 class="section-title">Agendar é simples</h2>
@@ -59,5 +122,7 @@
         </ol>
     </div>
 </section>
+
+{{> faq}}
 
 {{> cta}}

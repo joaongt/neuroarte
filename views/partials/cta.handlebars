@@ -2,9 +2,9 @@
     <div class="container cta-box">
         <span class="blob blob-pink" aria-hidden="true"></span>
         <span class="blob blob-yellow" aria-hidden="true"></span>
-        <h2>Vamos criar juntos?</h2>
+        <h2>{{#if ctaTitle}}{{ctaTitle}}{{else}}Vamos criar juntos?{{/if}}</h2>
         <p>Conte a data, o local e quantas crianças vão participar. A gente monta uma oficina sob medida.</p>
-        <a href="{{site.contato.whatsappLink}}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+        <a href="{{#if ctaLink}}{{ctaLink}}{{else}}{{site.contato.whatsappLink}}{{/if}}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
             <i class='bx bxl-whatsapp'></i> Chamar no WhatsApp
         </a>
     </div>

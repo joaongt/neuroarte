@@ -88,3 +88,61 @@ if ("IntersectionObserver" in window) {
 } else {
     reveals.forEach((el) => el.classList.add("in-view"));
 }
+
+// CONVERSÕES: conta cada clique para o WhatsApp no Analytics e no Meta Pixel
+// (só funciona se GA4_ID / META_PIXEL_ID estiverem configurados no .env)
+document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    const origem = window.location.pathname;
+    if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", { method: "whatsapp", page: origem });
+    }
+    if (typeof window.fbq === "function") {
+        window.fbq("track", "Contact", { content_name: origem });
+    }
+});
+
+// CARROSSEL DA FOTO PRINCIPAL (página inicial)
+const heroSlides = document.querySelectorAll(".hero-slide");
+
+if (heroSlides.length > 1) {
+    const dots = document.querySelectorAll(".hero-dot");
+    // com "reduzir movimento" ligado a foto continua trocando, só que sem zoom e mais devagar
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let current = 0;
+    let timer = null;
+
+    const show = (i) => {
+        current = (i + heroSlides.length) % heroSlides.length;
+        heroSlides.forEach((img, k) => {
+            img.classList.toggle("active", k === current);
+            img.setAttribute("aria-hidden", k !== current);
+        });
+        dots.forEach((d, k) => {
+            d.classList.toggle("active", k === current);
+            if (k === current) d.setAttribute("aria-current", "true");
+            else d.removeAttribute("aria-current");
+        });
+    };
+
+    const start = () => {
+        if (timer) return;
+        timer = setInterval(() => show(current + 1), reduceMotion ? 6500 : 4500);
+    };
+    const stop = () => { clearInterval(timer); timer = null; };
+
+    dots.forEach((d) => d.addEventListener("click", () => {
+        stop();
+        show(Number(d.dataset.slide));
+        start();
+    }));
+
+    // pausa quando a aba não está visível ou o mouse está em cima
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+    const box = document.querySelector(".hero-image");
+    box.addEventListener("mouseenter", stop);
+    box.addEventListener("mouseleave", start);
+
+    start();
+}

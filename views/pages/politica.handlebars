@@ -8,7 +8,11 @@
 <section class="section">
     <div class="container prose">
         <h2>Dados coletados</h2>
-        <p>Este site não possui cadastro e não coleta dados pessoais. As únicas informações salvas ficam no seu próprio navegador (por exemplo, a preferência de modo claro ou escuro).</p>
+        <p>Este site não possui cadastro e não pede dados pessoais. Algumas informações ficam salvas no seu próprio navegador (por exemplo, a preferência de modo claro ou escuro).</p>
+        {{#if (or analytics.ga4 analytics.metaPixel)}}
+        <h2>Medição de visitas</h2>
+        <p>Usamos ferramentas de medição{{#if analytics.ga4}} (Google Analytics){{/if}}{{#if analytics.metaPixel}} (Meta Pixel){{/if}} para entender, de forma agregada, quantas pessoas visitam o site, de onde vêm e quantas clicam para falar no WhatsApp. Essas ferramentas usam cookies e seguem as políticas de privacidade do Google e da Meta. Você pode bloquear esses cookies nas configurações do seu navegador.</p>
+        {{/if}}
         <h2>Contato pelo WhatsApp e Instagram</h2>
         <p>Ao clicar nos botões de WhatsApp ou Instagram, você é direcionado para essas plataformas, que possuem suas próprias políticas de privacidade. As informações que você nos envia por lá são usadas apenas para responder e organizar o agendamento das oficinas.</p>
         <h2>Imagens das crianças</h2>

@@ -15,9 +15,18 @@
         <div class="hero-image">
             <span class="blob blob-yellow" aria-hidden="true"></span>
             <span class="blob blob-blue" aria-hidden="true"></span>
-            <img src="/images/kids.png" alt="Crianças pintando telas em uma oficina da NeuroArte">
+            <div class="hero-slides" aria-roledescription="carrossel" aria-label="Fotos das oficinas">
+                {{#each site.heroFotos}}
+                <img src="{{src}}" alt="{{alt}}" class="hero-slide{{#if @first}} active{{/if}}" style="object-position: {{pos}}"{{#if @first}} fetchpriority="high"{{else}} aria-hidden="true" decoding="async"{{/if}}>
+                {{/each}}
+            </div>
+            <div class="hero-dots" role="group" aria-label="Escolher foto">
+                {{#each site.heroFotos}}
+                <button type="button" class="hero-dot{{#if @first}} active{{/if}}" data-slide="{{@index}}" aria-label="Mostrar foto {{inc @index}}"{{#if @first}} aria-current="true"{{/if}}></button>
+                {{/each}}
+            </div>
             <div class="hero-badge">
-                <span>🎨</span>
+                <span class="hero-badge-icon">{{> icon name="paleta"}}</span>
                 <div><strong>A domicílio</strong><small>e no seu evento</small></div>
             </div>
         </div>
@@ -32,8 +41,9 @@
         <h2 class="section-title">Do jeito que for melhor para sua família</h2>
         <div class="card-grid">
             {{#each site.oficinas}}
-            <article class="service-card color-{{cor}}">
-                <span class="service-icon">{{icone}}</span>
+            <article class="service-card color-{{cor}}{{#if foto}} has-photo{{/if}}">
+                {{#if foto}}<img class="service-photo" src="{{foto}}" alt="{{fotoAlt}}" loading="lazy">{{/if}}
+                <span class="service-icon">{{> icon name=icone}}</span>
                 <h3>{{titulo}}</h3>
                 <p>{{resumo}}</p>
                 <a href="/oficinas#{{id}}" class="card-link">Saiba mais <i class='bx bx-right-arrow-alt'></i></a>
@@ -50,6 +60,9 @@
         <h2 class="section-title">Do papelão à imaginação</h2>
         <p class="section-sub">Materiais simples viram grandes possibilidades criativas. Alguns temas que já passaram pelas nossas oficinas:</p>
         {{> temas}}
+        <div class="section-actions">
+            <a href="/portfolio" class="btn btn-primary"><i class='bx bx-images'></i> Ver portfólio completo</a>
+        </div>
     </div>
 </section>
 
@@ -57,8 +70,8 @@
 <section class="section reveal">
     <div class="container split">
         <div class="split-images">
-            <img src="/images/oficina-evento.jpg" alt="Crianças pintando juntas em uma mesa ao ar livre, sentadas em almofadas coloridas" class="img-tilt-left" loading="lazy">
-            <img src="/images/sensorial-bebe.jpg" alt="Menina pequena sorrindo com o fantoche de meia que criou na oficina" class="img-tilt-right" loading="lazy">
+            <img src="/images/portfolio/colagem.jpg" alt="Menina segurando o quadro de colagem com casa, árvores e flores que criou" class="img-tilt-left" loading="lazy">
+            <img src="/images/portfolio/sensorial-laranja.jpg" alt="Bebê explorando rodelas de laranja na água com uma colher" class="img-tilt-right" loading="lazy">
         </div>
         <div>
             <span class="eyebrow">Por que arte?</span>
@@ -82,16 +95,31 @@
 <!-- QUEM SOU EU -->
 <section class="section section-soft reveal">
     <div class="container about-teaser">
-        <div class="avatar-circle" aria-hidden="true">👩🏼‍🎨</div>
+        <div class="avatar-circle has-photo avatar-luh"><img src="/images/portfolio/luh-oficina.jpg" alt="A Luh, criadora da NeuroArte, com o avental da marca e o bicho-preguiça mascote das oficinas" loading="lazy"></div>
         <div>
             <span class="eyebrow">Quem sou eu?</span>
             <h2 class="section-title">Oi, eu sou a {{site.responsavel}}!</h2>
-            <p class="section-sub">Sou arte educadora e trabalho com oficinas criativas para crianças. Não estou brincando de fazer arte: para mim, arte é coisa séria, e existe muito estudo por trás de cada atividade.</p>
+            <p class="section-sub">Sou arte educadora, com {{site.anosEducacao}} anos na educação, e uso recursos artísticos para estimular as funções cognitivas das crianças. Não estou brincando de fazer arte: para mim, arte é coisa séria, e existe muito estudo por trás de cada atividade.</p>
             <a href="/sobre" class="btn btn-outline">Conheça minha história</a>
         </div>
     </div>
 </section>
 
 {{> feedbacks}}
+
+<!-- FESTAS -->
+<section class="section section-soft reveal">
+    <div class="container about-teaser">
+        <div class="avatar-circle has-photo"><img src="/images/portfolio/festa-cavaletes.jpg" alt="Mesa de pintura com cavaletes montada no jardim para uma festa" loading="lazy"></div>
+        <div>
+            <span class="eyebrow">Aniversário chegando?</span>
+            <h2 class="section-title">Leve a oficina para a festa</h2>
+            <p class="section-sub">Um espaço de arte com o tema da festa, onde as crianças criam, brincam e levam a obra para casa como lembrancinha.</p>
+            <a href="/festas-infantis" class="btn btn-primary">Ver oficina para festas</a>
+        </div>
+    </div>
+</section>
+
+{{> faq}}
 
 {{> cta}}

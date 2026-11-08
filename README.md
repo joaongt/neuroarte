@@ -6,13 +6,30 @@ Instagram: [@neurooarte](https://www.instagram.com/neurooarte/)
 ## Páginas
 
 - `/` Início: apresentação, modalidades, benefícios da arte, quem sou eu, feedbacks
-- `/oficinas` Oficina a domicílio, no seu evento e coletivas + como agendar
+- `/oficinas` Oficina a domicílio, no seu evento e coletivas + como agendar + dúvidas
+- `/festas-infantis` Página focada em aniversários (a busca mais comum das mães)
+- `/sitemap.xml` e `/robots.txt` gerados automaticamente para o Google
+- `/portfolio` Projetos com fotos, filtros por categoria e janela de detalhes (link direto: `/portfolio#slime`)
 - `/sobre` Quem sou eu (Luciana) e valores
 - `/politica` Política de Privacidade
 
 ## Como editar o conteúdo
 
-Quase todo o texto fica em **`data/site.js`**: contato, WhatsApp, oficinas, benefícios, feedbacks e o aviso de evento no topo do site (troque por `evento: null` para esconder).
+Quase todo o texto fica em **`data/site.js`**: contato, WhatsApp, oficinas, benefícios, feedbacks, perguntas frequentes (`faq`) e o aviso de evento no topo do site (troque por `evento: null` para esconder).
+
+Para adicionar um projeto ao portfólio, coloque as fotos em `public/images/portfolio/` (ideal: até 1200px, JPG) e copie um bloco da lista `portfolio` em `data/site.js`. A primeira foto é a capa.
+
+Em cada oficina dá para preencher `idade` (ex.: `'3 a 10 anos'`) e `preco` (ex.: `'A partir de R$ 000'`). Se ficarem `null`, não aparecem.
+
+## Marketing e medição
+
+Configure no `.env` (veja `.env.example`):
+
+- `SITE_URL`: endereço público do site, para a prévia do link com foto no WhatsApp/Instagram.
+- `GA4_ID`: Google Analytics 4. Cada clique no WhatsApp vira o evento `generate_lead`.
+- `META_PIXEL_ID`: Meta Pixel, para anúncios no Instagram/Facebook. Cada clique no WhatsApp vira o evento `Contact`.
+
+Cada botão de WhatsApp envia uma mensagem pronta diferente (casa, festa, escola), assim a Luh sabe de onde a mãe veio.
 
 ## Estrutura
 

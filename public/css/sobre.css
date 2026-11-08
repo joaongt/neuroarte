@@ -20,3 +20,20 @@
   padding: 0.2rem 0 0.2rem 1rem;
   margin: 1.5rem 0;
 }
+
+.img-luh {
+  object-position: 65% center;
+}
+
+.social-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+/* o botão fica dentro do texto (.prose), que pinta os links de rosa */
+.social-line .btn-primary,
+.social-line .btn-primary:hover {
+  color: var(--on-primary);
+}

@@ -1,0 +1,377 @@
+/* PORTFÓLIO */
+
+.portfolio-section {
+  padding-top: 3rem;
+}
+
+/* FILTROS */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.filter-btn {
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5em 1.2em;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--purple);
+}
+
+.filter-btn.active {
+  background-color: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+/* GRADE DE PROJETOS */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.project-card[hidden] {
+  display: none;
+}
+
+.project-open {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--surface);
+  color: var(--text-color);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.project-open:hover,
+.project-open:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--accent);
+}
+
+.project-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--accent-soft);
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-open:hover .project-media img {
+  transform: scale(1.05);
+}
+
+.project-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 0.25em 0.8em;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: #fff;
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* amarelo precisa de texto escuro para dar leitura */
+.color-yellow .project-badge {
+  color: #2b2340;
+}
+
+.project-badge.static {
+  position: static;
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+.project-count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25em 0.6em;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.3rem 1.3rem;
+  flex: 1;
+}
+
+.project-title {
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.project-text {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.project-more {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.portfolio-more {
+  margin-top: 2.6rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.portfolio-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--pink);
+  font-weight: 700;
+}
+
+/* JANELA DO PROJETO */
+
+.project-dialog {
+  width: min(980px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 28px;
+  background-color: var(--surface);
+  color: var(--text-color);
+  box-shadow: var(--shadow-2);
+  overflow: auto;
+}
+
+.project-dialog::backdrop {
+  background-color: rgba(23, 19, 31, 0.7);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--surface);
+  color: var(--text-color);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+}
+
+.dialog-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.dialog-gallery {
+  background-color: var(--accent-soft);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.dialog-main {
+  position: relative;
+}
+
+.dialog-main img {
+  width: 100%;
+  max-height: 70dvh;
+  object-fit: contain;
+  border-radius: 18px;
+  display: block;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2b2340;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+}
+
+.gallery-nav[hidden] {
+  display: none;
+}
+
+.gallery-nav.prev { left: 10px; }
+.gallery-nav.next { right: 10px; }
+
+.dialog-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.dialog-thumbs[hidden] {
+  display: none;
+}
+
+.dialog-thumbs button {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  background: none;
+}
+
+.dialog-thumbs button.active {
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+.dialog-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dialog-info {
+  padding: 2.4rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-info h2 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  margin-bottom: 0.6rem;
+}
+
+.dialog-info p {
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+}
+
+.dialog-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.skill-list li {
+  padding: 0.35em 0.9em;
+  border-radius: 999px;
+  background-color: var(--accent-soft);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.dialog-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.dialog-actions [hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .dialog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dialog-main img {
+    max-height: 55dvh;
+  }
+
+  .dialog-info {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  .project-text {
+    display: none;
+  }
+
+  .project-body {
+    padding: 0.8rem 1rem 1rem;
+  }
+}

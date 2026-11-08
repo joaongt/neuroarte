@@ -1,0 +1,71 @@
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">Portfólio</span>
+        <h1>Oficinas que já viraram arte</h1>
+        <p>Projetos reais das nossas oficinas em casa, em festas e em escolas. Clique em um projeto para ver as fotos e o que a criança desenvolve.</p>
+    </div>
+</section>
+
+<section class="section portfolio-section">
+    <div class="container">
+        <div class="filters" role="group" aria-label="Filtrar projetos">
+            {{#each site.categoriasPortfolio}}
+            <button type="button" class="filter-btn{{#if @first}} active{{/if}}" data-filter="{{id}}" aria-pressed="{{#if @first}}true{{else}}false{{/if}}">{{nome}}</button>
+            {{/each}}
+        </div>
+
+        <div class="project-grid">
+            {{#each portfolio}}
+            <article class="project-card color-{{cor}}" data-categoria="{{categoria}}" id="{{id}}">
+                <button type="button" class="project-open" data-project="{{@index}}" aria-label="Ver projeto {{titulo}}">
+                    <span class="project-media">
+                        <img src="{{capa.src}}" alt="{{capa.alt}}" loading="lazy">
+                        <span class="project-badge">{{categoriaNome}}</span>
+                        {{#if fotos.[1]}}<span class="project-count"><i class='bx bx-images'></i> {{fotos.length}}</span>{{/if}}
+                    </span>
+                    <span class="project-body">
+                        <span class="project-title">{{titulo}}</span>
+                        <span class="project-text">{{resumo}}</span>
+                        <span class="project-more">Ver projeto <i class='bx bx-right-arrow-alt'></i></span>
+                    </span>
+                </button>
+            </article>
+            {{/each}}
+        </div>
+
+        <p class="portfolio-more">
+            Tem muito mais no nosso Instagram.
+            <a href="{{site.contato.instagramLink}}" target="_blank" rel="noopener"><i class='bx bxl-instagram'></i> {{site.contato.instagram}}</a>
+        </p>
+    </div>
+</section>
+
+<!-- DETALHE DO PROJETO -->
+<dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <button type="button" class="dialog-close" id="dialog-close" aria-label="Fechar"><i class='bx bx-x'></i></button>
+    <div class="dialog-grid">
+        <div class="dialog-gallery">
+            <div class="dialog-main">
+                <img id="dialog-img" src="" alt="">
+                <button type="button" class="gallery-nav prev" id="gallery-prev" aria-label="Foto anterior"><i class='bx bx-chevron-left'></i></button>
+                <button type="button" class="gallery-nav next" id="gallery-next" aria-label="Próxima foto"><i class='bx bx-chevron-right'></i></button>
+            </div>
+            <div class="dialog-thumbs" id="dialog-thumbs"></div>
+        </div>
+        <div class="dialog-info">
+            <span class="project-badge static" id="dialog-badge"></span>
+            <h2 id="dialog-title"></h2>
+            <p id="dialog-text"></p>
+            <h3>O que a criança desenvolve</h3>
+            <ul class="skill-list" id="dialog-skills"></ul>
+            <div class="dialog-actions">
+                <a href="#" class="btn btn-primary" id="dialog-whatsapp" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> Quero essa oficina</a>
+                <a href="#" class="btn btn-outline" id="dialog-instagram" target="_blank" rel="noopener"><i class='bx bxl-instagram'></i> Ver no Instagram</a>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<script type="application/json" id="portfolio-data">{{{json portfolio}}}</script>
+
+{{> cta ctaTitle="Gostou de algum projeto?"}}

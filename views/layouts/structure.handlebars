@@ -4,10 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NeuroArte: oficinas de arte criativa para crianças, a domicílio e no seu evento, em Belo Horizonte.">
+    <meta name="description" content="{{#if description}}{{description}}{{else}}NeuroArte: oficinas de arte criativa para crianças, a domicílio e no seu evento, em Belo Horizonte.{{/if}}">
+    {{#if noindex}}<meta name="robots" content="noindex">{{else}}<link rel="canonical" href="{{baseUrl}}{{path}}">{{/if}}
+
+    <!-- Prévia do link no WhatsApp, Instagram e Facebook (precisa de URL absoluta) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="NeuroArte">
+    <meta property="og:url" content="{{baseUrl}}{{path}}">
     <meta property="og:title" content="{{title}}">
-    <meta property="og:description" content="{{site.slogan}}. Oficinas criativas a domicílio e no seu evento em BH.">
-    <meta property="og:image" content="/images/kids.png">
+    <meta property="og:description" content="{{#if description}}{{description}}{{else}}{{site.slogan}}. Oficinas criativas a domicílio e no seu evento em BH.{{/if}}">
+    <meta property="og:image" content="{{baseUrl}}/images/kids.png">
+    <meta property="og:image:alt" content="Crianças pintando telas em uma oficina da NeuroArte">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Dados estruturados para o Google -->
+    <script type="application/ld+json">{{{json schema}}}</script>
+    {{#if faqSchema}}<script type="application/ld+json">{{{json faqSchema}}}</script>{{/if}}
+
+    {{#if analytics.ga4}}
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{analytics.ga4}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{analytics.ga4}}');
+    </script>
+    {{/if}}
+    {{#if analytics.metaPixel}}
+    <!-- Meta Pixel (Instagram/Facebook Ads) -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{{analytics.metaPixel}}');
+        fbq('track', 'PageView');
+    </script>
+    {{/if}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -52,8 +88,14 @@
                 <ul class="list-links">
                     <li><a href="/" class="link {{#if (eq path '/')}}current{{/if}}">Início</a></li>
                     <li><a href="/oficinas" class="link {{#if (eq path '/oficinas')}}current{{/if}}">Oficinas</a></li>
+                    <li><a href="/festas-infantis" class="link {{#if (eq path '/festas-infantis')}}current{{/if}}">Festas</a></li>
                     <li><a href="/sobre" class="link {{#if (eq path '/sobre')}}current{{/if}}">Quem sou eu</a></li>
-                    <li><a href="{{site.contato.instagramLink}}" class="link" target="_blank" rel="noopener">Portfólio</a></li>
+                    <li><a href="/portfolio" class="link {{#if (eq path '/portfolio')}}current{{/if}}">Portfólio</a></li>
+                    <li class="menu-ig">
+                        <a href="{{site.contato.instagramLink}}" class="ig-link" target="_blank" rel="noopener" aria-label="Instagram da NeuroArte ({{site.contato.instagram}})" title="Siga {{site.contato.instagram}}">
+                            <i class='bx bxl-instagram'></i><span class="ig-label">{{site.contato.instagram}}</span>
+                        </a>
+                    </li>
                     <li class="menu-cta">
                         <a href="{{site.contato.whatsappLink}}" class="btn btn-primary" target="_blank" rel="noopener">
                             <i class='bx bxl-whatsapp'></i> Agendar
@@ -97,8 +139,11 @@
                 <h4>Navegação</h4>
                 <a class="link-footer" href="/">Início</a>
                 <a class="link-footer" href="/oficinas">Oficinas</a>
+                <a class="link-footer" href="/festas-infantis">Festas infantis</a>
+                <a class="link-footer" href="/portfolio">Portfólio</a>
                 <a class="link-footer" href="/sobre">Quem sou eu</a>
                 <a class="link-footer" href="/politica">Política de Privacidade</a>
+                <a class="link-footer" href="/creditos">Créditos do site</a>
             </div>
 
             <div class="col" id="contato">

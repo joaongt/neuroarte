@@ -2,21 +2,26 @@
     <div class="container">
         <span class="eyebrow">Quem sou eu?</span>
         <h1>Oi, eu sou a {{site.responsavel}}</h1>
-        <p>{{site.responsavelNome}}, arte educadora e a pessoa por trás da NeuroArte com a {{site.responsavel}}.</p>
+        <p>{{site.responsavelNome}}, arte educadora com {{site.anosEducacao}} anos na educação e criadora da NeuroArte.</p>
     </div>
 </section>
 
 <section class="section">
     <div class="container split">
         <div class="split-images">
-            <img src="/images/mascara-flores.jpg" alt="Criança segurando a máscara de flores coloridas que criou" class="img-tilt-left" loading="lazy">
-            <img src="/images/menino-com-flores.jpg" alt="Criança com sua arte inspirada no livro O menino com flores no cabelo" class="img-tilt-right" loading="lazy">
+            <img src="/images/kids.png" alt="Crianças pintando telas em uma oficina da NeuroArte" class="img-tilt-left" loading="lazy">
+            <img src="/images/portfolio/luh-oficina.jpg" alt="A Luh, criadora da NeuroArte, com o avental da marca e o bicho-preguiça mascote das oficinas" class="img-tilt-right img-luh" loading="lazy">
         </div>
         <div class="prose reveal">
-            <p>Sou arte educadora e trabalho com oficinas criativas para crianças. Não estou brincando de fazer arte: para mim, arte é coisa séria. Existe muito estudo por trás de cada atividade desenvolvida.</p>
+            <p>Sou arte educadora e estou há {{site.anosEducacao}} anos na educação. Na NeuroArte, uso recursos artísticos para estimular as funções cognitivas das crianças: atenção, memória, linguagem, planejamento e coordenação. É daí que vem o "Neuro" do nome.</p>
+            <p>Não estou brincando de fazer arte: para mim, arte é coisa séria. Existe muito estudo por trás de cada atividade desenvolvida, e quase toda oficina começa com uma boa história.</p>
+            <p>A NeuroArte é marca registrada no INPI ®, e nas oficinas sempre tem companhia: o nosso mascote, um bicho-preguiça de pelúcia que as crianças juram ser mais legal que eu.</p>
             <p>Nas oficinas, materiais simples como papelão e recicláveis viram foguetes, cavalinhos, ursinhos e asas de borboleta. A criança participa de todo o processo, da construção à pintura, e é protagonista da própria criação. E depois da arte vem a melhor parte: brincar com aquilo que criou.</p>
-            <blockquote class="quote">“Meu trabalho hoje era o sonho dessa criança aqui.” 🌈</blockquote>
+            <blockquote class="quote">“Meu trabalho hoje era o sonho dessa criança aqui.”</blockquote>
             <p>Hoje levo as oficinas para casas, festas, escolas e espaços parceiros de {{site.cidade}}, sempre com uma equipe apaixonada pelo universo infantil.</p>
+            <p class="social-line">
+                <a href="{{site.contato.instagramLink}}" class="btn btn-primary" target="_blank" rel="noopener"><i class='bx bxl-instagram'></i> Siga a NeuroArte: {{site.contato.instagram}}</a>
+            </p>
         </div>
     </div>
 </section>
@@ -29,10 +34,15 @@
         <div class="team-grid">
             {{#each site.equipe}}
             <article class="team-card color-{{cor}}">
+                {{#if foto}}
+                <img class="team-photo" src="{{foto}}" alt="Foto de {{nome}}" loading="lazy">
+                {{else}}
                 <span class="team-initial" aria-hidden="true">{{nome.[0]}}</span>
+                {{/if}}
                 <div>
-                    <h3>{{nome}}</h3>
+                    <h3>{{nome}}{{#if apelido}} <span class="team-nick">{{apelido}}</span>{{/if}}</h3>
                     <p>{{papel}}</p>
+                    {{#if instagram}}<a class="team-ig" href="https://www.instagram.com/{{instagram}}/" target="_blank" rel="noopener"><i class='bx bxl-instagram'></i> @{{instagram}}</a>{{/if}}
                 </div>
             </article>
             {{/each}}
@@ -46,17 +56,17 @@
         <h2 class="section-title">O que guia cada oficina</h2>
         <div class="card-grid">
             <article class="service-card color-pink">
-                <span class="service-icon">💗</span>
+                <span class="service-icon">{{> icon name="coracao"}}</span>
                 <h3>Afeto</h3>
                 <p>Um ambiente acolhedor, onde toda criança se sente bem-vinda.</p>
             </article>
             <article class="service-card color-green">
-                <span class="service-icon">🌱</span>
+                <span class="service-icon">{{> icon name="broto"}}</span>
                 <h3>Liberdade</h3>
                 <p>Não existe desenho certo ou errado: existe a criança se expressando.</p>
             </article>
             <article class="service-card color-purple">
-                <span class="service-icon">🧠</span>
+                <span class="service-icon">{{> icon name="cerebro"}}</span>
                 <h3>Estudo</h3>
                 <p>Cada atividade é planejada para estimular corpo, mente e emoções.</p>
             </article>

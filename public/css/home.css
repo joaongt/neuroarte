@@ -38,14 +38,66 @@
   position: relative;
 }
 
-.hero-image img {
+/* carrossel de fotos: mesma moldura, a foto vai trocando */
+.hero-slides {
   position: relative;
   z-index: 1;
   width: 100%;
   aspect-ratio: 5 / 4;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
   box-shadow: var(--shadow-2);
+  background-color: var(--accent-soft, var(--bg-soft));
+  isolation: isolate;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1.1s ease, transform 6s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-dots {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: -26px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--border);
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.hero-dot.active {
+  width: 26px;
+  background-color: var(--pink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: opacity 1.4s ease;
+    transform: none;
+  }
 }
 
 .hero-image .blob-yellow {
@@ -77,8 +129,10 @@
   animation: float 4s ease-in-out infinite;
 }
 
-.hero-badge span {
-  font-size: 1.8rem;
+.hero-badge-icon .na-icon {
+  width: 38px;
+  height: 38px;
+  color: var(--purple);
 }
 
 .hero-badge strong {
@@ -213,4 +267,46 @@
   .hero-badge {
     left: 8px;
   }
+}
+
+/* foto no lugar do emoji da Luh */
+.avatar-circle.has-photo {
+  overflow: hidden;
+  padding: 0;
+}
+
+.avatar-circle.has-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 50%;
+}
+
+/* modalidades com foto */
+.service-card.has-photo {
+  padding-top: 0;
+}
+
+.service-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(100% + 3.6rem);
+  max-width: none;
+  margin: 0 -1.8rem;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+}
+
+.service-card.has-photo .service-icon {
+  z-index: 2;
+  margin-top: -30px;
+  background-color: var(--surface);
+  box-shadow: var(--shadow-1);
+}
+
+/* rosto da Luh fica à esquerda na foto da contação */
+.avatar-luh img {
+  object-position: 70% 20%;
 }

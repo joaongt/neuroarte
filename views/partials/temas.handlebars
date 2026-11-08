@@ -1,9 +1,20 @@
 <div class="theme-grid">
     {{#each site.temas}}
+    {{#if foto}}
+    <a class="theme-card has-photo color-{{cor}}" href="/portfolio#{{projeto}}">
+        <span class="theme-photo">
+            <img src="{{foto}}" alt="Oficina {{titulo}}" loading="lazy">
+            <span class="theme-icon" aria-hidden="true">{{> icon name=icone}}</span>
+        </span>
+        <h3>{{titulo}}</h3>
+        <p>{{texto}}</p>
+    </a>
+    {{else}}
     <article class="theme-card color-{{cor}}">
-        <span class="theme-icon">{{icone}}</span>
+        <span class="theme-icon">{{> icon name=icone}}</span>
         <h3>{{titulo}}</h3>
         <p>{{texto}}</p>
     </article>
+    {{/if}}
     {{/each}}
 </div>
