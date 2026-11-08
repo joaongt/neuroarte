@@ -13,7 +13,7 @@ const portfolio = site.portfolio.map((p) => ({
 }));
 
 // Páginas públicas: título e descrição pensados nas buscas das mães no Google.
-const pages = [
+export const pages = [
   {
     path: '/',
     view: 'pages/home',

@@ -6,10 +6,17 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "render-start": "node app.js"
+    "render-start": "node app.js",
+    "build": "node scripts/build.js"
   },
   "type": "module",
-  "keywords": ["neuroarte", "oficina", "arte", "criancas", "bh"],
+  "keywords": [
+    "neuroarte",
+    "oficina",
+    "arte",
+    "criancas",
+    "bh"
+  ],
   "author": "João Vieira",
   "license": "ISC",
   "dependencies": {
@@ -19,5 +26,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

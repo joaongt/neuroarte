@@ -1,6 +1,7 @@
 // Imports
 import express from 'express';
 import dotenv from 'dotenv';
+import { pathToFileURL } from 'node:url';
 import exphbs from 'express-handlebars';
 import router from './routes/handlers.js';
 import site from './data/site.js';
@@ -87,15 +88,23 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send('Erro do servidor');
 });
 
-const server = app.listen(PORT, () => {
-  console.log(`App is listening on port ${PORT}`);
-});
+export default app;
 
-process.on('SIGTERM', () => {
-  console.info('SIGTERM signal received.');
-  console.log('Closing server...');
-  server.close(() => {
-    console.log('Server closed.');
-    process.exit(0);
+// Só sobe o servidor quando rodado direto (npm start / npm run dev).
+// O build estático (scripts/build.js) importa o app sem abrir porta fixa.
+const runDirectly = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (runDirectly) {
+  const server = app.listen(PORT, () => {
+    console.log(`App is listening on port ${PORT}`);
   });
-});
+
+  process.on('SIGTERM', () => {
+    console.info('SIGTERM signal received.');
+    console.log('Closing server...');
+    server.close(() => {
+      console.log('Server closed.');
+      process.exit(0);
+    });
+  });
+}

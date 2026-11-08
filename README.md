@@ -41,7 +41,8 @@ views/layouts/          estrutura (header, footer)
 views/pages/            páginas
 views/partials/         blocos reutilizados (CTA, feedbacks)
 public/css/             header.css (global), lightMode/darkMode e um CSS por página
-public/js/main.js       modo escuro, menu mobile, animações
+public/js/main.js       modo escuro, menu mobile, animações, carrossel
+scripts/build.js        gera o site estático em dist/ (Cloudflare Pages)
 public/images/          imagens
 ```
 
@@ -52,7 +53,29 @@ npm install
 npm run dev
 ```
 
-Acesse http://localhost:5500. Para produção: `npm start` (ou `npm run render-start` no Render).
+Acesse http://localhost:5500.
+
+## Publicação (Cloudflare Pages, gratuito)
+
+O site é publicado como arquivos estáticos: `npm run build` sobe o app, salva o HTML pronto de cada página em `dist/` e copia a pasta `public/`. Assim ele nunca "dorme" e a hospedagem é gratuita.
+
+```bash
+SITE_URL=https://neurooarte.com.br npm run build
+```
+
+Configuração no Cloudflare (Workers & Pages → Create → Pages → conectar ao GitHub):
+
+| Campo | Valor |
+|---|---|
+| Repositório / branch | `joaongt/neuroarte` / `main` |
+| Framework preset | None |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Variáveis | `SITE_URL=https://neurooarte.com.br` (e, se usar, `GA4_ID`, `META_PIXEL_ID`) |
+
+Cada push no `main` publica de novo sozinho. Domínio: em *Custom domains*, adicionar `neurooarte.com.br` e `www.neurooarte.com.br` e criar no Registro.br os registros que o Cloudflare mostrar.
+
+Ainda dá para rodar como servidor Node (`npm start`), por exemplo no Render ou com o `Dockerfile`.
 
 ## Tecnologias
 
